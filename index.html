@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelAnks - Travel Booking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Travel<span>Anks</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#booking">Book Now</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Explore The World</h1>
+            <p>Plan your journey. Book your trip. Create unforgettable memories.</p>
+            <a href="#booking" class="hero-btn">Book Your Trip</a>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations" id="destinations">
+
+        <h2>Popular Destinations</h2>
+        <p class="section-subtitle">Choose your next adventure</p>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <div class="destination-image goa">
+                    <span>GOA</span>
+                </div>
+                <div class="destination-info">
+                    <h3>Goa</h3>
+                    <p>Beaches, nightlife and unforgettable sunsets.</p>
+                    <h4>From ₹8,999</h4>
+                    <button onclick="selectDestination('Goa')">
+                        Select
+                    </button>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image manali">
+                    <span>MANALI</span>
+                </div>
+                <div class="destination-info">
+                    <h3>Manali</h3>
+                    <p>Mountains, snow and breathtaking landscapes.</p>
+                    <h4>From ₹11,999</h4>
+                    <button onclick="selectDestination('Manali')">
+                        Select
+                    </button>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image jaipur">
+                    <span>JAIPUR</span>
+                </div>
+                <div class="destination-info">
+                    <h3>Jaipur</h3>
+                    <p>Experience royal culture, forts and heritage.</p>
+                    <h4>From ₹7,999</h4>
+                    <button onclick="selectDestination('Jaipur')">
+                        Select
+                    </button>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image kerala">
+                    <span>KERALA</span>
+                </div>
+                <div class="destination-info">
+                    <h3>Kerala</h3>
+                    <p>Backwaters, greenery and peaceful experiences.</p>
+                    <h4>From ₹10,999</h4>
+                    <button onclick="selectDestination('Kerala')">
+                        Select
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+
+        <h2>Book Your Trip</h2>
+        <p class="section-subtitle">Enter your travel details</p>
+
+        <div class="booking-container">
+
+            <form id="bookingForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>From</label>
+                        <input
+                            type="text"
+                            id="from"
+                            placeholder="Enter starting location"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Destination</label>
+
+                        <select id="destination" required>
+                            <option value="">Select destination</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Manali">Manali</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Travel Date</label>
+                        <input
+                            type="date"
+                            id="travelDate"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number of Travelers</label>
+                        <input
+                            type="number"
+                            id="travelers"
+                            min="1"
+                            max="20"
+                            value="1"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Travel Type</label>
+
+                        <select id="travelType" required>
+                            <option value="">Select travel type</option>
+                            <option value="Flight">Flight</option>
+                            <option value="Train">Train</option>
+                            <option value="Bus">Bus</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hotel Required?</label>
+
+                        <select id="hotel">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="book-btn">
+                    Calculate & Book
+                </button>
+
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Booking Result -->
+    <section class="result-section" id="resultSection">
+
+        <div class="result-box">
+
+            <h2>Booking Summary</h2>
+
+            <div id="bookingDetails"></div>
+
+            <div class="price">
+                Total Amount: <span id="totalPrice">₹0</span>
+            </div>
+
+            <button onclick="confirmBooking()" class="confirm-btn">
+                Confirm Booking
+            </button>
+
+        </div>
+
+    </section>
+    <!-- Registered Travelers -->
+
+<section class="registered-section" id="registered">
+
+    <h2>Registered Travelers</h2>
+    <p class="section-subtitle">
+        Manage registered travelers
+    </p>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="travelerTableBody">
+                <!-- Travelers will be added here using JavaScript -->
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+
+        <h2>About TravelAnks</h2>
+
+        <p>
+            TravelAnks is a simple travel booking system developed using
+            HTML, CSS and JavaScript. It allows users to select destinations,
+            enter travel details, calculate estimated costs and confirm
+            their bookings.
+        </p>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 TravelAnks | Travel Booking System</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
