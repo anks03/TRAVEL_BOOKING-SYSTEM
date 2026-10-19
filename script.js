@@ -79,7 +79,10 @@ const destinationPrices = {
     Jaipur: 7999,
     Kerala: 10999,
     Mumbai: 5999,
-    Delhi: 6999
+    Delhi: 6999,
+    Udaipur: 9499,
+    Rishikesh: 8499,
+    Andaman: 14999
 };
 
 
