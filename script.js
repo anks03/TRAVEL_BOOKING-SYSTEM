@@ -1,6 +1,27 @@
 // Registered travelers
 
 let travelersList = [];
+
+const themeToggle = document.getElementById("themeToggle");
+const savedTheme = localStorage.getItem("travelanks-theme");
+
+function setTheme(isDark) {
+    document.body.classList.toggle("dark-mode", isDark);
+    themeToggle.textContent = isDark ? "☀" : "☾";
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+
+    const action = isDark ? "light" : "dark";
+    themeToggle.setAttribute("aria-label", `Switch to ${action} mode`);
+    themeToggle.title = `Switch to ${action} mode`;
+    localStorage.setItem("travelanks-theme", isDark ? "dark" : "light");
+}
+
+setTheme(savedTheme === "dark");
+
+themeToggle.addEventListener("click", function() {
+    setTheme(!document.body.classList.contains("dark-mode"));
+});
+
 // Display registered travelers in table
 
 function displayTravelers() {

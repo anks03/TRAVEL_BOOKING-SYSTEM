@@ -39,12 +39,13 @@ select {
     top: 0;
     left: 0;
     width: 100%;
+    box-sizing: border-box;
 
     height: 78px;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     padding: 0 7%;
 
@@ -74,6 +75,8 @@ select {
 .nav-links {
     display: flex;
 
+    margin: 0 auto;
+
     gap: 34px;
 
     list-style: none;
@@ -91,28 +94,30 @@ select {
     color: #42d4c4;
 }
 
-.nav-button {
-    padding: 11px 21px;
-
-    border: 1px solid rgba(255,255,255,0.3);
-
-    border-radius: 30px;
-
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
     color: white;
-
-    font-size: 14px;
-
-    transition: 0.3s;
+    font-size: 23px;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.25s ease;
 }
 
-.nav-button:hover {
+.theme-toggle:hover {
     background: #42d4c4;
-
     border-color: #42d4c4;
-
     color: #071a2b;
 }
 
+.theme-toggle:focus-visible {
+    outline: 2px solid #42d4c4;
+    outline-offset: 3px;
+}
 
 /* ========================================
    HERO
@@ -123,23 +128,115 @@ select {
     min-height: 680px;
 
     position: relative;
+    isolation: isolate;
 
     display: flex;
     align-items: center;
 
     padding: 0 9%;
 
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -6%;
+    z-index: -2;
+
     background-image:
         url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=90");
-
     background-size: cover;
     background-position: center;
+
+    animation: hero-image-drift 20s ease-in-out infinite alternate;
+    transition: background-image 0.6s ease;
+}
+
+body.dark-mode .hero::before {
+    background-image:
+        url("https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?auto=format&fit=crop&w=2000&q=90");
+}
+
+@keyframes hero-image-drift {
+    from {
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+    }
+}
+
+.shooting-stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.dark-mode .shooting-stars {
+    opacity: 1;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 130px;
+    height: 2px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, transparent 0%, rgba(206,231,255,0.75) 70%, #fff 100%);
+    box-shadow: 0 0 8px rgba(214,235,255,0.8);
+    opacity: 0;
+    transform: rotate(35deg);
+    animation: shooting-star-fall 7s linear infinite;
+}
+
+.shooting-star-one {
+    top: 8%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.shooting-star-two {
+    top: 2%;
+    left: 34%;
+    animation-delay: 2.3s;
+    animation-duration: 8s;
+}
+
+.shooting-star-three {
+    top: 18%;
+    left: 59%;
+    animation-delay: 4.6s;
+    animation-duration: 9s;
+}
+
+@keyframes shooting-star-fall {
+    0%,
+    3% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(35deg);
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    18%,
+    100% {
+        opacity: 0;
+        transform: translate3d(85vw, 70vh, 0) rotate(35deg);
+    }
 }
 
 .hero-overlay {
     position: absolute;
 
     inset: 0;
+    z-index: -1;
 
     background:
         linear-gradient(
@@ -150,8 +247,19 @@ select {
         );
 }
 
+body.dark-mode .hero-overlay {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4,12,24,0.92) 0%,
+            rgba(4,12,24,0.72) 42%,
+            rgba(4,12,24,0.28) 100%
+        );
+}
+
 .hero-content {
     position: relative;
+    z-index: 1;
 
     max-width: 680px;
 
@@ -259,6 +367,7 @@ select {
 
 .scroll-indicator {
     position: absolute;
+    z-index: 1;
 
     bottom: 35px;
     left: 9%;
@@ -281,6 +390,16 @@ select {
     height: 1px;
 
     background: #42d4c4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero::before {
+        animation: none;
+    }
+
+    .shooting-stars {
+        display: none;
+    }
 }
 
 
@@ -528,9 +647,9 @@ select {
 
     align-items: center;
 
-    justify-content: space-between;
+    justify-content: center;
 
-    gap: 15px;
+    gap: 20px;
 }
 
 .destination-bottom span {
@@ -1203,6 +1322,28 @@ footer p {
 
 @media (max-width: 600px) {
 
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+
     .destination-grid {
         grid-template-columns: 1fr;
     }
@@ -1211,4 +1352,109 @@ footer p {
         height: 350px;
     }
 
+}
+
+body.dark-mode {
+    background: #101820;
+    color: #e6eeeb;
+}
+
+body.dark-mode .destinations,
+body.dark-mode .result-section {
+    background: #101820;
+}
+
+body.dark-mode .booking-section {
+    background: #14252a;
+}
+
+body.dark-mode .registered-section {
+    background: #17262b;
+}
+
+body.dark-mode .section-heading h2,
+body.dark-mode .booking-intro h2,
+body.dark-mode .result-box h2,
+body.dark-mode .booking-stats strong,
+body.dark-mode .form-title {
+    color: #e6eeeb;
+}
+
+body.dark-mode .section-description,
+body.dark-mode .booking-intro > p:not(.eyebrow),
+body.dark-mode .booking-stats span,
+body.dark-mode .form-group label {
+    color: #aabbb6;
+}
+
+body.dark-mode .booking-stats {
+    border-color: rgba(230,238,235,0.16);
+}
+
+body.dark-mode .booking-card,
+body.dark-mode .result-box,
+body.dark-mode .table-container {
+    background: #1d2b31;
+    color: #e6eeeb;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select {
+    border-color: #405158;
+    background: #142126;
+    color: #e6eeeb;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus {
+    background: #1d2b31;
+}
+
+body.dark-mode .book-btn {
+    background: #42d4c4;
+    color: #071a2b;
+}
+
+body.dark-mode #bookingDetails {
+    border-color: #405158;
+}
+
+body.dark-mode #bookingDetails p,
+body.dark-mode .itinerary-day p {
+    color: #b7c5c1;
+}
+
+body.dark-mode #bookingDetails strong {
+    color: #e6eeeb;
+}
+
+body.dark-mode .itinerary-section {
+    background: linear-gradient(135deg, #1b3437 0%, #1b2e34 100%);
+    border-color: #345352;
+}
+
+body.dark-mode .itinerary-section h3 {
+    color: #e6eeeb;
+}
+
+body.dark-mode .itinerary-day {
+    background: #1d2b31;
+    border-color: #405158;
+}
+
+body.dark-mode .price small {
+    color: #aabbb6;
+}
+
+body.dark-mode .registered-section .section-heading h2 {
+    color: #e6eeeb;
+}
+
+body.dark-mode td {
+    border-color: #34444a;
+    color: #c4d0cc;
+}
+
+body.dark-mode tbody tr:hover {
+    background: #26373d;
 }
