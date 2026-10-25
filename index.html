@@ -330,6 +330,78 @@
             </div>
         </div>
 
+
+        <!-- DUBAI -->
+        <div class="destination-card">
+            <div class="destination-image dubai">
+                <div class="image-overlay"></div>
+
+                <div class="destination-content">
+                    <span class="destination-tag">LUXURY</span>
+
+                    <h3>Dubai</h3>
+
+                    <p>Skyline views, desert thrills and iconic luxury.</p>
+
+                    <div class="destination-bottom">
+                        <span>From <strong>₹18,999</strong></span>
+
+                        <button onclick="selectDestination('Dubai')">
+                            →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- BALI -->
+        <div class="destination-card">
+            <div class="destination-image bali">
+                <div class="image-overlay"></div>
+
+                <div class="destination-content">
+                    <span class="destination-tag">TROPICAL</span>
+
+                    <h3>Bali</h3>
+
+                    <p>Temple vibes, beaches and unforgettable sunsets.</p>
+
+                    <div class="destination-bottom">
+                        <span>From <strong>₹12,999</strong></span>
+
+                        <button onclick="selectDestination('Bali')">
+                            →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MALDIVES -->
+        <div class="destination-card">
+            <div class="destination-image maldives">
+                <div class="image-overlay"></div>
+
+                <div class="destination-content">
+                    <span class="destination-tag">OCEAN ESCAPE</span>
+
+                    <h3>Maldives</h3>
+
+                    <p>Turquoise waters, private villas and serene escapes.</p>
+
+                    <div class="destination-bottom">
+                        <span>From <strong>₹21,999</strong></span>
+
+                        <button onclick="selectDestination('Maldives')">
+                            →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </section>
@@ -360,7 +432,7 @@
                 <div class="booking-stats">
 
                     <div>
-                        <strong>6+</strong>
+                        <strong>12+</strong>
                         <span>Destinations</span>
                     </div>
 
@@ -485,6 +557,18 @@
                                 
                                 <option value="Andaman">
                                     Andaman
+                                </option>
+
+                                <option value="Dubai">
+                                    Dubai
+                                </option>
+
+                                <option value="Bali">
+                                    Bali
+                                </option>
+
+                                <option value="Maldives">
+                                    Maldives
                                 </option>
 
                             </select>
@@ -623,6 +707,10 @@
 
             <div id="bookingDetails"></div>
 
+            <div id="itinerarySection" class="itinerary-section">
+                <h3 id="itineraryTitle"></h3>
+                <div class="itinerary-days" id="itineraryDays"></div>
+            </div>
 
             <div class="price">
 

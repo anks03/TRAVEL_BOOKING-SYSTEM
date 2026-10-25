@@ -437,6 +437,20 @@ select {
         url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=85");
 }
 
+.dubai {
+    background-image:
+        url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=85");
+}
+
+.bali {
+    background-image:
+        url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&q=85");
+}
+
+.maldives {
+    background-image: url("https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1000&q=85");
+}
+
 
 /* DARK OVERLAY */
 
@@ -859,6 +873,59 @@ select {
 
 #bookingDetails strong {
     color: #18221f;
+}
+
+.itinerary-section {
+    display: none;
+
+    margin-top: 20px;
+    padding: 22px 20px;
+
+    background: linear-gradient(135deg, #f5fbfa 0%, #eefaf8 100%);
+
+    border: 1px solid #d7efeb;
+    border-radius: 8px;
+}
+
+.itinerary-section.visible {
+    display: block;
+}
+
+.itinerary-section h3 {
+    margin-bottom: 15px;
+
+    color: #0b2538;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.itinerary-days {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.itinerary-day {
+    background: white;
+    border: 1px solid #e3efed;
+    border-radius: 6px;
+    padding: 14px 12px;
+}
+
+.itinerary-day span {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #159c91;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.itinerary-day p {
+    color: #53615d;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 .price {
